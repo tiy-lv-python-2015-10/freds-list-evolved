@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+.homepage_title{
+    line-height: 90px;
+    color: #551A8B;
+    text-align: center;
+    font-weight: 500;
+    font-family: "Times New Roman",Times,serif;
+    font-size: 5em;
+    margin: 0 auto;
+}
+
+.homepage_container{
+    margin: auto 10%;
+}
+
+#us_title{
+    margin-bottom: -10px;
+}
+
+#homepage_list{
+    list-style: none;
+}

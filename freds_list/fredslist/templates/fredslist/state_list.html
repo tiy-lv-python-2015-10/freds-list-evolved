@@ -1,0 +1,35 @@
+{% extends 'fredslist/base.html' %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+    Hello {{ user.username }}
+    <h1 class="homepage_title">fredslist</h1>
+    <div class="container-fluid homepage_container">
+        <h3 id="us_title">US</h3>
+        <hr>
+        <div class="row">
+        <ul style="list-style: none;">
+        {% for state in state_list %}
+                <div style="float: left;">
+
+                        <li class="state_list text-left">{{ state.state }}</li>
+                        <ul>
+                            {% for city in city %}
+
+                                {% if city.state == state %}
+                                <li class="state_list text-left">
+                                    <a href="{% url 'category_list' %}">{{ city}} </a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                </div>
+
+        {% endfor %}
+        </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

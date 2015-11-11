@@ -1,0 +1,15 @@
+
+{% extends 'fredslist/base.html' %}
+
+
+
+{% block content %}
+   <h1 class="login_title">Register</h1>
+   <form method="post" action="{% url 'register' %}" class="login-block">
+       {% csrf_token %}
+       <input type="hidden" name="next" value="{{ next }}">
+       {{ form.as_p }}
+        <button type="submit" value="Register">Submit</button>
+   </form>
+
+{% endblock %}
