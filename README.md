@@ -37,3 +37,14 @@ to round out the system
 * Ensure that users can only update and edit their own information
 * Use filters with the api to implement the search feature on the post list
 * Add endpoint that will display the top50 feature as described above
+
+### Sendgrid
+This is a transactional email sender that will provide detailed reporting on emails sent.  To get going:
+* Sign up for an account (it's free)
+* Click your name drop down on the dashboard
+* Look for the API keys option
+* Add a new key (Don't forget to copy it down)
+* Now read through the documentation for your options:
+	* Official SendGrid Python Library: https://github.com/sendgrid/sendgrid-python#example
+	* DJango Library: https://github.com/elbuo8/sendgrid-django
+	* WebV2 API: https://sendgrid.com/docs/API_Reference/Web_API/index.html
