@@ -15,26 +15,31 @@ class City(models.Model):
         return '{}'.format(self.city)
 
 class Category(models.Model):
-    city = models.ForeignKey(City)
     title = models.CharField(max_length=255)
 
+    @property
+    def unique_category(self):
+        return self.subcategory_set.all()
+
+
     def __str__(self):
-        return "Location: {}, Category: {}".format(self.city, self.title)
+        return "{}".format(self.title)
 
 
 class SubCategory(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=255)
 
+
     def __str__(self):
-        return "Category: {}, {}".format(self.category, self.title)
+        return "{}, {}".format(self.category, self.title)
 
 
 class Post(models.Model):
     sub_category = models.ForeignKey(SubCategory)
-    location = models.OneToOneField(City)
-    user = models.OneToOneField(User)
-
+    location = models.ForeignKey(City)
+    user = models.ForeignKey(User)
+    favorited_posts = models.ManyToManyField(User, through='Favorite', related_name="favorited_posts")
     phone_number = models.CharField(max_length=15)  # needs validator
     contact_name = models.CharField(max_length=255)
     posting_title = models.CharField(max_length=255)
@@ -61,3 +66,11 @@ class Images(models.Model):
 
     def __str__(self):
         return "{}, {}".format(self.post, self.image)
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User)
+    post = models.ForeignKey(Post)
+    favorited_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{}, {}".format(self.user, self.post.posting_title)

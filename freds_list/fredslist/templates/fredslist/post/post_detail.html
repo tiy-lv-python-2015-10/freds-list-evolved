@@ -1,0 +1,14 @@
+{% extends 'fredslist/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <h2>{{ post.posting_title }}</h2>
+    {% for post in post.post_images %}
+        <img src="{{ post.image.url }}">
+    {% endfor %}
+
+    <p>{{ post.posting_body }}</p>
+
+{% endblock %}

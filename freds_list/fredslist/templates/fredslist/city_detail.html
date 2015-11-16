@@ -1,0 +1,66 @@
+{% extends 'fredslist/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="home_main_container">
+    <div class="row-fluid">
+        <div class="col-xs-12 col-sm-3 category_column category_firstcolumn">
+            <a href="{% url 'home' %}"><h1 class="category_list_sitetitle">fredslist</h1></a>
+            <p class="text_center">post to classifieds</p>
+            <a href="{% url 'login' %}"><p class="text_center">my account</p></a>
+            <br>
+            <p class="text_center">search fredslist</p>
+            <input type="search" id="mySearch" placeholder="Search for something..">
+            <br>
+            <br>
+            <p class="text_center">help, faq, abuse, legal</p>
+            <p class="text_center">avoid scams & fraud</p>
+            <p class="text_center">personal safety tips</p>
+            <p class="text_center">terms of use</p>
+            <p class="text_center">privacy policy</p>
+            <p class="text_center">system status</p>
+            <br>
+            <br>
+            <p class="text_center">about fredslist</p>
+            <p class="text_center">craigslist is hiring in sf</p>
+            <p class="text_center">craigslist open source</p>
+            <p class="text_center">craigslist blog</p>
+            <p class="text_center">best-of-craigslist</p>
+            <p class="text_center">craigslist TV</p>
+            <p class="text_center">"craigslist joe"</p>
+            <p class="text_center">craig connects</p>
+
+        </div>
+        <div class="col-xs-12 col-sm-7  category_secondcolumn">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="text_center category_column category_citystate">{{ city.city }}, {{ city.state }}</p>
+                </div>
+            </div>
+
+                {% for c in category %}
+                    <div class="col-xs-12 col-sm-4">
+                <h4 class="category_column">{{ c.title }}</h4>
+                <div class="subcategories">
+                    <ul>
+                        {% for subc in c.unique_category %}
+                            <li>
+                               <a href="{% url 'post_list'  %}">{{ subc.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                    </div>
+                {% endfor %}
+
+        </div>
+        <div class="col-xs-12 col-sm-2  category_column category_thirdcolumn">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

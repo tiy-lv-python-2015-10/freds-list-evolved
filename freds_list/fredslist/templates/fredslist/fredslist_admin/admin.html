@@ -1,0 +1,19 @@
+{% extends 'fredslist/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            {% for post in post_list %}
+                <a href="{% url 'post_detail' post.id %}"><h3>{{ post.posting_title }}</h3></a>
+            {% endfor %}
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <a href="{% url 'post_create' %}"><p>create post</p></a>
+            <p>{{ user }}</p>
+            <p>{{ user_token }}</p>
+
+        </div>
+    </div>
+{% endblock %}

@@ -15,30 +15,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='City',
+            fields=[
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('city', models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='Images',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('image', models.ImageField(blank=True, upload_to='fredslist_images', null=True)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Location',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
-                ('state', models.CharField(max_length=21)),
-                ('city', models.CharField(max_length=255)),
-                ('zip_code', models.CharField(max_length=10)),
             ],
         ),
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('phone_number', models.CharField(max_length=15)),
                 ('contact_name', models.CharField(max_length=255)),
                 ('posting_title', models.CharField(max_length=255)),
@@ -48,13 +46,20 @@ class Migration(migrations.Migration):
                 ('posting_body', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('modified_at', models.DateTimeField(auto_now=True)),
-                ('location', models.OneToOneField(to='fredslist.Location')),
+                ('location', models.OneToOneField(to='fredslist.City')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='State',
+            fields=[
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('state', models.CharField(max_length=21)),
             ],
         ),
         migrations.CreateModel(
             name='SubCategory',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=255)),
                 ('category', models.ForeignKey(to='fredslist.Category')),
             ],
@@ -75,8 +80,13 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(to='fredslist.Post'),
         ),
         migrations.AddField(
+            model_name='city',
+            name='state',
+            field=models.ForeignKey(to='fredslist.State'),
+        ),
+        migrations.AddField(
             model_name='category',
-            name='location',
-            field=models.ForeignKey(to='fredslist.Location'),
+            name='city',
+            field=models.ForeignKey(to='fredslist.City'),
         ),
     ]

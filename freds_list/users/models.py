@@ -1,8 +1,9 @@
 from django.db import models
+from fredslist.models import Post
 
-# Create your models here.
-# class Profile(models.Model):
-#     favorites =
+
+class UserProfile(models.Model):
+    favorites = models.ManyToManyField(Post, related_name='favorited_by')
 
 
 

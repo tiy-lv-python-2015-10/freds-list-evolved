@@ -7,20 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fredslist', '0002_auto_20151109_0629'),
+        ('fredslist', '0002_remove_category_city'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='category',
-            name='location',
-        ),
         migrations.AlterField(
             model_name='post',
             name='location',
-            field=models.OneToOneField(to='fredslist.City'),
-        ),
-        migrations.DeleteModel(
-            name='Location',
+            field=models.ForeignKey(to='fredslist.City'),
         ),
     ]

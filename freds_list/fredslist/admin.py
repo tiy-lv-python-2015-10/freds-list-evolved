@@ -1,5 +1,6 @@
 from django.contrib import admin
-from fredslist.models import State, City, Category, SubCategory, Post, Images
+from fredslist.models import State, City, Category, SubCategory, Post, Images, Favorite
+
 
 @admin.register(State)
 class StateAdmin(admin.ModelAdmin):
@@ -8,12 +9,12 @@ class StateAdmin(admin.ModelAdmin):
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ( 'city',)
+    list_display = ( 'city','state',)
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('city', 'title',)
+    list_display = ( 'title',)
 
 
 @admin.register(SubCategory)
@@ -31,3 +32,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Images)
 class ImagesAdmin(admin.ModelAdmin):
     list_display = ('post', 'image',)
+
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ('post', 'user',)

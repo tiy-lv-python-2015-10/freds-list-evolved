@@ -40,8 +40,13 @@ INSTALLED_APPS = (
     'django_extensions',
     'debug_toolbar',
     'bootstrap3',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework.filters',
     'users',
     'fredslist',
+    'api',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,7 +87,7 @@ WSGI_APPLICATION = 'freds_list.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fredslist2',
+        'NAME': 'fredslist3',
         'USER': 'cesar',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -117,5 +122,40 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.ScopedRateThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/day',
+        'user': '1000/day',
+        'states': '100000/day'
+    },
+    # 'DEFAULT_FILTER_BACKENDS': (
+    #     'rest_framework_filters.backends.DjangoFilterBackend', ...
+    # ),
+
+
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_USER = "cesarm2333"
+SENDGRID_PASSWORD = "suckmyass1"
+
 
