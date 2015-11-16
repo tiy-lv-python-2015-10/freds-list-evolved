@@ -1,0 +1,52 @@
+
+{% extends 'fredslist/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block content %}
+<h2 class="text-center login_title">All posts</h2>
+    <div class="col-xs-12 col-sm-4">
+
+        <form class="form-inline" role="form" method="post" action="{% url 'post_search' %}" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Search Posts</label>
+                <input type="text" class="form-control" id="text" name="search_field">
+                <input type="submit" value="Search" name="submit" class="btn btn-primary">
+            </div>
+        </form>
+         {% for post in post_list %}
+             <a href="{% url 'post_detail' post.id %}"><h4 class="category_column">{{ post.posting_title }}</h4></a>
+             <a href="{% url 'create_favorite' post.id %}"><button>favorite</button></a>
+             {% for favorite in favorites %}
+                 {% if post.id == favorite.post.id %}
+                    <p>favorited!</p>
+                 {% endif %}
+             {% endfor %}
+         {% endfor %}
+     </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
