@@ -1,0 +1,57 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <form action="{% url 'account' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Keyword">
+    </form>
+    <ul>
+        {% for keyword in keywords %}
+        <li>
+            {{ keyword.keyword }}
+            <span><a href="{% url 'delete_keyword' keyword.id %}">delete</a></span>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>{{ user.username }} Token: </h3>
+    <p>{{ key }}</p>
+    <p><a href="{% url 'regenerate' %}">regenerate</a></p>
+    <h3>{{ user.username }} Posts: </h3>
+    <ul id="post-list">
+    {% for post in post_list %}
+        <h4><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h4>
+        <span><a href="{% url 'add_favorite' post.id %}">Favorite</a></span>
+        {% for thing in post.favorite_set.all %}
+            {% if thing.user == user %}
+                <p>FAVORITED!!!</p>
+                <span><a href="{% url 'delete_favorite' post.id %}">DELETE</a></span>
+            {% endif %}
+        {% endfor %}
+        <li>
+            <ul>
+                {% if not post.image_set.all %}
+                    <img src="{% static 'images/craigslist.jpeg'%}">
+                {% endif %}
+                {% for image in images %}
+                    {% if image.post == post %}
+                        <li><img src="{{ image.image.url }}"></li>
+                    {% endif %}
+                {% endfor %}
+                {% if post.price %}
+                    <li>${{ post.price }}</li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endfor %}
+    {% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="{% url 'account' %}?page={{ page_obj.previous_page_number }}"><-Prev</a>
+    {% endif %}
+    {{ page_obj }}
+    {% if page_obj.has_next %}
+        <a href="{% url 'account' %}?page={{ page_obj.next_page_number }}">Next -></a>
+    {% endif %}
+{% endif %}
+    </ul>
+{% endblock %}

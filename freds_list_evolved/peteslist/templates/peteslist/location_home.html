@@ -1,0 +1,67 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <h1 id="home_logo">craigslist</h1>
+    <div class="tab">
+        <ul id="home-nav">
+            <li><a href="#">US</a></li>
+            <li><a href="#">Canada</a></li>
+            <li><a href="#">Europe</a></li>
+            <li><a href="#">Asia/Pacific/Middle East</a></li>
+            <li><a href="#">Oceania</a></li>
+            <li><a href="#">Latin America</a></li>
+            <li><a href="#">Africa</a></li>
+        </ul>
+    </div>
+
+    <div class="row" id="loc-row">
+        <div class="col-md-3">
+            {% for state in states1 %}
+                <h4>{{ state }}</h4>
+                <ul>
+                {% for location in location_list %}
+                    {% if location.state == state %}
+                        <li><a href="{% url 'temp_only' location.city %}">{{ location.city }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            {% for state in states2 %}
+                <h4>{{ state }}</h4>
+                <ul>
+                {% for location in location_list %}
+                    {% if location.state == state %}
+                        <li><a href="{% url 'temp_only' location.city %}">{{ location.city }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            {% for state in states3 %}
+                <h4>{{ state }}</h4>
+                <ul>
+                {% for location in location_list %}
+                    {% if location.state == state %}
+                        <li><a href="{% url 'temp_only' location.city %}">{{ location.city }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            {% for state in states4 %}
+                <h4>{{ state }}</h4>
+                <ul>
+                {% for location in location_list %}
+                    {% if location.state == state %}
+                        <li><a href="{% url 'temp_only' location.city %}">{{ location.city }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div><!-- End row -->
+{% endblock %}

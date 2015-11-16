@@ -1,0 +1,93 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="row" id="format_home">
+        <div class="col-md-1"></div>
+        <div class="col-md-2" id="sidebar_left">
+            <div id="logo">
+                <a href="{% url 'locs_list' %}">craigslist</a>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li><a id="post" href="{% url 'post' %}">
+                        post to classified</a></li>
+                    <li><a href="{% url 'account' %}">my account</a></li>
+                    <li><a href="{% url 'register' %}">register</a></li>
+                    <li><a href="{% url 'login' %}">login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8" id="middle">
+            <div id="city_header">
+                <h2 class="nolink">{{ city }}</h2>
+            </div>
+            <div class="col-md-4">
+                <h4 class="ban">community</h4>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in community1 %}
+                        <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in community2 %}
+                        <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4 class="ban">housing</h4>
+                <ul>
+                {% for listing in housing %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                {% endfor %}
+                </ul>
+                <h4 class="ban"><a href="{% url 'list_posts' %}">for sale</a></h4>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in for_sale1 %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in for_sale2 %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <p></p>
+                <h4 class="ban">services</h4>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in services1 %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6 unpad">
+                    <ul>
+                    {% for listing in services2 %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h4 class="ban">jobs</h4>
+                <ul>
+                {% for listing in jobs %}
+                    <li><a href="{% url 'category_posts' listing.title %}">{{ listing }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div><!-- end col8 center -->
+        <div class="col-md-1"></div>
+    </div><!-- End row -->
+
+{% endblock %}

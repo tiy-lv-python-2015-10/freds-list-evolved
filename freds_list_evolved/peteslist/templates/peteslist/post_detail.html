@@ -1,0 +1,23 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <h2>{{ post.title }}</h2>
+    <ul>
+        <li>User: {{ post.user }}</li>
+        <li>Description: {{ post.description }}</li>
+        <li>Location: {{ post.location }}</li>
+        <li>Phone: {{ post.phone_number }}</li>
+        <li>By phone: {{ post.by_phone }}</li>
+        <li>By text: {{ post.by_text }}</li>
+        <li>Contact Name: {{ post.contact_name }}</li>
+        <li>Price: {{ post.price }}</li>
+        <li>Condition: {{ post.condition }}</li>
+        <li>Created at: {{ post.created_at }}</li>
+    </ul>
+
+    {% for image in images %}
+        <p><img src="{{ image.image.url }}"></p>
+    {% endfor %}
+
+{% endblock %}

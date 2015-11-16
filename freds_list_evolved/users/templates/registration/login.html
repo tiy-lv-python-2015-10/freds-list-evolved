@@ -1,0 +1,12 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form method="post" action="{%  url 'login' %}" role="form">
+        {%  csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}
