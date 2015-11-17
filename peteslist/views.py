@@ -1,3 +1,4 @@
+import logging
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.forms import formset_factory
@@ -9,6 +10,8 @@ from peteslist.forms import ForSaleForm, ImageForm, SearchForm, KeywordForm
 from peteslist.models import Location, Category, Post, Favorite, Keyword
 from django.utils import timezone
 from django.db.models import Q, Count
+
+logger = logging.getLogger(__name__)
 
 
 class LocationList(ListView):
@@ -227,6 +230,7 @@ class ListPosts(ListView):
         context['images'] = images
         form = SearchForm()
         context['form'] = form
+        logger.debug("*********ERROR************")
         return context
 
 

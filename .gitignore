@@ -1,6 +1,5 @@
 *.pyc
-staticfiles
 .direnv
 .envrc
 .DS_Store
-static
+__pycache__
