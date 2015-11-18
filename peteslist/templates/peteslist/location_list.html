@@ -1,6 +1,8 @@
 {% extends 'peteslist/base.html' %}
 {% load staticfiles %}
+{% load cache %}
 {% block content %}
+    {% cache 3600 slow %}
     <h1 id="home_logo">craigslist</h1>
     <div class="tab">
         <ul id="home-nav">
@@ -64,4 +66,5 @@
             {% endfor %}
         </div>
     </div><!-- End row -->
+    {% endcache %}
 {% endblock %}

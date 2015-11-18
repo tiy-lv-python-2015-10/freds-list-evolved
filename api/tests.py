@@ -23,7 +23,7 @@ class PostTests(APITestCase):
         response_post = response.data['results'][0]
         self.assertEqual(response_post['title'], post.title)
 
-    def test_chirp_list_request(self):
+    def test_post_list_request(self):
         post = Post.objects.create(title='Test1', description='Test description',
                                    user=self.user)
         factory = APIRequestFactory()
@@ -37,7 +37,7 @@ class PostTests(APITestCase):
         response_post = response.data['results'][0]
         self.assertEqual(response_post['title'], post.title)
 
-    def test_create_chirp(self):
+    def test_create_post(self):
         url = reverse('api_post_list_create')
         data = {'title': 'Test1', 'description': 'Test description'}
         self.client.force_authenticate(user=self.user)

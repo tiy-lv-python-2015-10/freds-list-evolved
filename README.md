@@ -1,7 +1,11 @@
+[![Build Status](https://travis-ci.org/fredoflynn/freds-list-evolved.svg?branch=master)](https://travis-ci.org/fredoflynn/freds-list-evolved)
+
+[![Coverage Status](https://coveralls.io/repos/fredoflynn/freds-list-evolved/badge.svg?branch=master&service=github)](https://coveralls.io/github/fredoflynn/freds-list-evolved?branch=master)
+
 # Fred's List Evolved
 
 ## Description
-While the original Fred's List works it still needs many enhancements.  Its original counterpart 
+While the original Fred's List works it still needs many enhancements.  Its original counterpart
 in real life has no api and this needs to rectified.  Additionally, more features will be needed
 to round out the system
 

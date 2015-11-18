@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.decorators.cache import cache_page
 from freds_list_evolved import settings
 from peteslist.views import LocationList, LocationListHome, UserAccount
 from users.views import Register
@@ -26,7 +27,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^locations/$', LocationList.as_view(), name='list_locations'),
     url(r'^locations/(?P<city>.+)/$', 'peteslist.views.loc', name='temp_only'),
-    url(r'^loc/$', LocationListHome.as_view(), name='locs_list'),
+    url(r'^loc/$', cache_page(60 * 60)(LocationListHome.as_view()), name='locs_list'),
     url(r'^register/', Register.as_view(), name='register'),
     url(r'^logout/', 'django.contrib.auth.views.logout',
         {'next_page': '/locations/'}, name='logout'),

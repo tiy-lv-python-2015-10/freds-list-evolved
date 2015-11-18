@@ -79,35 +79,14 @@ class TestListPosts(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='joe', email='joe@joe.com',
                                  password='password')
+        self.client = Client()
 
-
-# class TestChirp(TestCase):
-#
-#     def setUp(self):
-#         user = User.objects.create_user('bob', 'bob@bob.com', password='password')
-#         chirp = Chirp.objects.create(author=user, message='my test message')
-#
-#     def test_is_recent(self):
-#         chirp = Chirp.objects.get(pk=1)
-#
-#         self.assertTrue(chirp.is_recent())
-#
-#     def test_get_tag_count(self):
-#         chirp = Chirp.objects.get(pk=1)
-#         chirp.tag_set.create(name="Test1")
-#         chirp.tag_set.create(name="Test2")
-#
-#         self.assertEqual(chirp.get_tag_count(), len(chirp.tag_set.all()))
-#
-# class TestChirpList(TestCase):
-#
-#     def setUp(self):
-#         user = User.objects.create_user('bob', 'bob@bob.com', password='password')
-#         chirp = Chirp.objects.create(author=user, message='my test message')
-#
-#     def test_time(self):
-#         client = Client()
-#         response = client.get(reverse('list_chirps'))
-#
-#         self.assertEqual(len(response.context_data['chirp_list']), 1)
-#         self.assertEqual(response.status_code, 200)
+    # def test_list_posts(self):
+    #     location = Location.objects.create(city='boston', state='MA')
+    #     post = Post.objects.create(user=self.user, title='Test title 1',
+    #                                description='The best description ever.',
+    #                                location=location)
+    #     response = self.client.get(reverse('list_posts'))
+    #     self.assertEqual(response.status_code, 200)
+    #     response_post = response.context_data['post_list'][0]
+    #     self.assertEqual(response_post.id, post.id)
