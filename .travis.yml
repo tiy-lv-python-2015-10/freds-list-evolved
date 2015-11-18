@@ -12,7 +12,7 @@ env:
 
 before_install:
   - export DJANGO_SETTINGS_MODULE=freds_list_evolved.travis.settings
-  - export PYTHONPATH=$HOME/builds/fredoflynn/freds_list_evolved
+  - export PYTHONPATH=$HOME/builds/fredoflynn/freds-list-evolved
   - export PIP_USE_MIRRORS=true
 
 install:
