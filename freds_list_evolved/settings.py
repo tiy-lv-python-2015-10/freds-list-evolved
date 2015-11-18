@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.auth.forms',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'formtools',
     'peteslist',
     'users',
@@ -51,6 +52,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -167,5 +169,13 @@ LOGGING = {
     },
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211'
+    }
+}
+
