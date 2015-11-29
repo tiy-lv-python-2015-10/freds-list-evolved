@@ -363,3 +363,6 @@ def delete_keyword(request, keyword_id):
     keyword = Keyword.objects.get(id=keyword_id)
     keyword.delete()
     return HttpResponseRedirect(reverse('account'))
+
+def wtf(request):
+    return render(request, 'peteslist/google03c5b3464a1f9e6d.html')

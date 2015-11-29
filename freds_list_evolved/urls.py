@@ -41,6 +41,7 @@ urlpatterns = [
         'peteslist.views.delete_keyword', name='delete_keyword'),
     url(r'^regenerate/', 'peteslist.views.regenerate_token',
         name='regenerate'),
+    url(r'^google03c5b3464a1f9e6d.html/', 'peteslist.views.wtf')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
