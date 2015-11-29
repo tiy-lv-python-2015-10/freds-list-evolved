@@ -21,3 +21,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIR = (
     os.path.join(BASE_DIR, 'static')
 )
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_bmemcached.memcached.BMemcached',
+        'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
+        'OPTIONS': {
+                    'username': os.environ.get('memcached-app43966617'),
+                    'password': os.environ.get('0KDfdOwTX05ptoou')
+            }
+    }
+}
