@@ -16,4 +16,7 @@
     <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
     FACEBOOK
     </a>
+    <a href="{% url 'social:begin' 'google' %}?next={{ request.path }}">
+    GOOGLE
+    </a>
 {% endblock %}
