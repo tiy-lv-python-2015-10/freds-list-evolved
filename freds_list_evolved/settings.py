@@ -45,9 +45,16 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'corsheaders',
     'formtools',
+    'social.apps.django_app.default',
     'peteslist',
     'users',
     'api',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect'
             ],
         },
     },
@@ -179,3 +188,9 @@ CACHES = {
     }
 }
 
+SOCIAL_AUTH_TWITTER_KEY = 'a9xOcrm5s84WETWHoaL9ieKKB'
+SOCIAL_AUTH_TWITTER_SECRET = 'bxF1P3i8d3NV2eAbga5FfrqoEf92JsCSlFKVYEbNzKuM1g7E7E'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1628007710794606'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b1bbdcbcd54b44b724406adf4145b727'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']

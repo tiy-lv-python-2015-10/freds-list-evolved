@@ -24,6 +24,7 @@ from users.views import Register
 
 
 urlpatterns = [
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^locations/$', LocationList.as_view(), name='list_locations'),
     url(r'^locations/(?P<city>.+)/$', 'peteslist.views.loc', name='temp_only'),

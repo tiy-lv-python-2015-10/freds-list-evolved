@@ -9,4 +9,11 @@
         {{ form.as_p }}
         <input type="submit" value="Login">
     </form>
+
+    <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+    Login with twitter
+    </a>
+    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+    FACEBOOK
+    </a>
 {% endblock %}

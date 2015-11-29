@@ -25,6 +25,8 @@ class ListCreatePosts(generics.ListCreateAPIView):
     pagination_class = SmallPagination
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
 
+
+
     def perform_create(self, serializer):
         human = self.request.user
         serializer.save(user=human)
