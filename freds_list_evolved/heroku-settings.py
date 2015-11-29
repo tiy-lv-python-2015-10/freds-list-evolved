@@ -24,11 +24,7 @@ STATICFILES_DIR = (
 
 CACHES = {
     'default': {
-        'BACKEND': 'django_bmemcached.memcached.BMemcached',
-        'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
-        'OPTIONS': {
-                    'username': os.environ.get('memcached-app43966617'),
-                    'password': os.environ.get('0KDfdOwTX05ptoou')
-            }
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'https://evening-falls-6344.herokuapp.com/'
     }
 }
