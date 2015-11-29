@@ -27,8 +27,8 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^locations/$', LocationList.as_view(), name='list_locations'),
+    url(r'^loc/$', LocationListHome.as_view(), name='locs_list'),
     url(r'^locations/(?P<city>.+)/$', 'peteslist.views.loc', name='temp_only'),
-    url(r'^loc/$', cache_page(60 * 60)(LocationListHome.as_view()), name='locs_list'),
     url(r'^register/', Register.as_view(), name='register'),
     url(r'^logout/', 'django.contrib.auth.views.logout',
         {'next_page': '/locations/'}, name='logout'),
@@ -43,3 +43,6 @@ urlpatterns = [
         name='regenerate'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+    # url(r'^loc/$', cache_page(60 * 60)(LocationListHome.as_view()), name='locs_list'),
