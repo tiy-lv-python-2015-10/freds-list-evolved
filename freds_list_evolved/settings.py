@@ -54,6 +54,7 @@ INSTALLED_APPS = (
 AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -194,3 +195,6 @@ SOCIAL_AUTH_TWITTER_SECRET = 'bxF1P3i8d3NV2eAbga5FfrqoEf92JsCSlFKVYEbNzKuM1g7E7E
 SOCIAL_AUTH_FACEBOOK_KEY = '1628007710794606'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b1bbdcbcd54b44b724406adf4145b727'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'AIzaSyAm4y50WSbYyg4XCdAaOLUovYAWZAPZ1A0'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'wCWb66Zlwm4pQ42bA6XAudzo'
