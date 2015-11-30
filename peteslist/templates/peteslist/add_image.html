@@ -1,0 +1,17 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    <table>
+        {% for form in formset %}
+        {{ form }}
+        {% endfor %}
+    </table>
+    <input type="submit">
+    <p>Hit sumbit to continue with no images also</p>
+</form>
+
+{% endblock %}

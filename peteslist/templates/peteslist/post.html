@@ -1,0 +1,53 @@
+{% extends 'peteslist/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <form role="form" method="post" action="{% url 'post' %}" class="form-horizontal">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="required">Type</label>
+            {{ form.type }}
+        </div>
+        <div class="form-group">
+            <label class="required">Category</label>
+            {{ form.category }}
+        </div>
+        <div class="form-group">
+            <label class="required">Title</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label class="required">Description</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label class="optional">By Phone: </label>
+            {{ form.by_phone }}
+        </div>
+        <div class="form-group">
+            <label class="optional">By Text:</label>
+            {{ form.by_text }}
+        </div>
+        <div class="form-group">
+            <label class="optional">Phone Number</label>
+            {{ form.phone_number }}
+        </div>
+        <div class="form-group">
+            <label class="optional">Contact Name</label>
+            {{ form.contact_name }}
+        </div>
+        <div class="form-group">
+            <label class="optional">Price</label>
+            {{ form.price }}
+        </div>
+        <div class="form-group">
+            <label>Specific Location:</label>
+            {{ form.specific_location }}
+        </div>
+        <div class="form-group">
+            <label class="optional">Condition</label>
+            {{ form.condition }}
+        </div>
+        <input type="submit" value="Next" name="submit">
+    </form>
+
+{% endblock %}
